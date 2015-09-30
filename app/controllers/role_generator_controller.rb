@@ -23,7 +23,7 @@ class RoleGeneratorController < ApplicationController
 	end
 
 	def generate
-		if ( Rails.application.config.my_role_list.empty? )
+		if ( !Rails.application.config.my_role_list.empty? )
 			@your_role = Rails.application.config.my_role_list.pop
 			result(@your_role)
 		else
