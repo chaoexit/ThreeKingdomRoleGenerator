@@ -22,7 +22,7 @@ module ThreeKingdomRoleGenerator
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    config.my_role_list = ['test', 'test2']
+    config.my_role_list = []
     config.my_mutex = Mutex.new
   end
 end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/generate' => 'role_generator#generate'
   get '/list' => 'role_generator#rolelist'
   get '/result' => 'role_generator#result'
+  get '/getstatus' => 'role_generator#checkstatus'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -4,8 +4,26 @@ class RoleGeneratorController < ApplicationController
 		@role_list = Rails.application.config.my_role_list
 	end
 
+	def checkstatus
+		if !Rails.application.config.my_role_list.empty?
+			respond_to do |format|
+				format.html { render :json => {
+						state: 'started'
+					}.to_json, status: :ok, :content_type=>'application/json'
+				}
+			end
+		else
+			respond_to do |format|
+				format.html { render :json => {
+						state: 'idle'
+					}.to_json, status: :ok, :content_type=>'application/json'
+				}
+			end				
+		end
+	end
+
 	def generate
-		if ( Rails.application.config.my_role_list.any? )
+		if ( Rails.application.config.my_role_list.empty? )
 			@your_role = Rails.application.config.my_role_list.pop
 			result(@your_role)
 		else

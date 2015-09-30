@@ -1,11 +1,34 @@
 <html>
 <head>
   <title>ThreeKingdomRoleGenerator</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 <body>
+<div id="test">
 If you're ready, GO!!!<br>
 <a href="/generate">
    <input type="button" value="Reveal your role" />
 </a>
+</div>
+<div id="test2">
+Game is not started yet, wait before the form shows up<br>
+</div>
+<script type="text/javascript">
+	var getStatus = function() {
+		$.get('/getstatus', function (response) {
+			console.log(response.state)
+			if ( response.state != "idle" ) {
+				$('#test').show();
+				$('#test2').hide();
+			} else {
+				$('#test2').show();
+				$('#test').hide();
+			}
+		})
+	};
+	$('#test2').hide();
+	$('#test').hide();
+	setInterval(getStatus, 1000);
+</script>
 </body>
 </html>
