@@ -25,6 +25,7 @@ class RoleGeneratorController < ApplicationController
 	def generate
 		if ( !Rails.application.config.my_role_list.empty? )
 			@your_role = Rails.application.config.my_role_list.pop
+			logger.info(@your_role)
 			result(@your_role)
 		else
 			redirect_to root_path, notice: 'Game is not started'
